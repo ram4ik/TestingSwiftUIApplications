@@ -9,8 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var darkModeEnabled: Bool = false
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Toggle(isOn: self.$darkModeEnabled) {
+                Text("")
+            }.labelsHidden()
+                .accessibility(identifier: "darkModeToggle")
+            
+            Text(self.darkModeEnabled ? "ON" : "OFF").font(.largeTitle)
+                .accessibility(identifier: "darkModeText")
+        }
     }
 }
 
